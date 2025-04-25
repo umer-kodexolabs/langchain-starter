@@ -4,4 +4,5 @@ transformers
 langchain-huggingface
 tokenizers
 datasets
-pytorch
+# pytorch
+torch
