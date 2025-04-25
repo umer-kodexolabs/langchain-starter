@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from typing import List
 
 # Setup LLM
-llm = OllamaLLM(model="", streaming=True)
+llm = OllamaLLM(model="llama3.2:latest", streaming=True)
 
 
 class FollowupInput(BaseModel):
@@ -66,7 +66,10 @@ Only return the questions numbered as 1., 2., 3.
 
 
 followup_tool = StructuredTool.from_function(
-    name="FollowupGenerator", func=generate_followups, args_schema=FollowupInput
+    name="FollowupGenerator",
+    description="Generates 3 follow-up questions based on the main question and answer.",
+    func=generate_followups,
+    args_schema=FollowupInput,
 )
 
 
@@ -82,7 +85,10 @@ def generate_summary(qna_list):
 
 
 summary_tool = StructuredTool.from_function(
-    name="SummaryGenerator", func=generate_summary, args_schema=SummaryInput
+    name="SummaryGenerator",
+    description="Generates summary based on all user answers.",
+    func=generate_summary,
+    args_schema=SummaryInput,
 )
 
 

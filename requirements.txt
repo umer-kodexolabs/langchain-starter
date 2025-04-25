@@ -3,6 +3,5 @@ langchain-ollama
 transformers
 langchain-huggingface
 tokenizers
-datasets
-# pytorch
+datasets 
 torch
